@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Samuel Simkin — engineering portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive React portfolio built around original project artifacts, current experience, and clearly scoped engineering case studies.
 
-## Available Scripts
+## Review only
 
-In the project directory, you can run:
+This branch is **not approved for production**. Do not merge it into master or publish it to the production Netlify site until Samuel has reviewed and approved it.
 
-### `npm start`
+- Review branch: `design/portfolio-review-20260928`
+- Temporary review URL: https://ccd-helping-salad-annex.trycloudflare.com
+- Existing production site: https://samuelsimkin.com
+- `CONTEXT=production` builds are deliberately blocked.
+- Search indexing is deliberately disabled for this candidate.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The temporary URL is a separate preview on the authorized development server, not a Netlify production deployment. It depends on that preview server and tunnel remaining online.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Development
 
-### `npm test`
+```sh
+npm ci
+npm start
+CI=true npm test -- --watchAll=false --runInBand
+GENERATE_SOURCEMAP=false npm run build
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Source organization
 
-### `npm run build`
+- `src/Portfolio.js`: page composition and interaction components
+- `src/content/projects.js`: project and experience content
+- `src/portfolio.css`: design tokens and responsive styling
+- `src/components/portfolio/Icons.js`: interface icons
+- `public/media`: optimized original project images and demonstration videos
+- `scripts/review-build-guard.cjs`: fail-closed production-context guard
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The site includes a two-view PCB artifact viewer, project-category filters, detailed case studies, accessible image dialogs, native video playback, real contact links, and a downloadable resume reflowed from the supplied September 2026 PDF text. No employer-internal images or specifications are included.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Original source and media remain available on the original master branch and in Git history. See `REVIEW-NOTES.md` for scope and release precautions.

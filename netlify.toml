@@ -1,0 +1,7 @@
+# REVIEW BUILD ONLY. Do not deploy to production before Samuel approves.
+[build]
+  command = "npm run build"
+  publish = "build"
+[build.environment]
+  NODE_VERSION = "22"
+  GENERATE_SOURCEMAP = "false"
