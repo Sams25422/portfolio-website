@@ -295,9 +295,9 @@ export const experience = [
     description:
       "Electrical design for autonomous-vehicle builds, from evolving system requirements to coordinated vehicle integration.",
     details: [
-      "Design and revise wiring harnesses and electrical documentation.",
-      "Create circuit diagrams, harness drawings, and 3D harness models in SOLIDWORKS.",
-      "Collaborate across engineering teams through design revisions and vehicle builds.",
+      "Designed and revised wiring harnesses and electrical documentation.",
+      "Created circuit diagrams, harness drawings, and 3D harness models in SOLIDWORKS.",
+      "Collaborated across engineering teams through design revisions and vehicle builds.",
     ],
   },
   {

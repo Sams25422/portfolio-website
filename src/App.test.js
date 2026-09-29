@@ -2,16 +2,14 @@ import React from "react";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { PortfolioRoutes } from "./Portfolio";
-import { projects } from "./content/projects";
+import { projects, experience } from "./content/projects";
 beforeAll(() => {
   window.scrollTo = jest.fn();
-  window.matchMedia = jest
-    .fn()
-    .mockImplementation(() => ({
-      matches: true,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-    }));
+  window.matchMedia = jest.fn().mockImplementation(() => ({
+    matches: true,
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+  }));
 });
 afterEach(cleanup);
 const open = (url = "/") =>
@@ -99,3 +97,35 @@ test("mobile menu can be opened and closed", () => {
     screen.getByRole("button", { name: "Open navigation" }),
   ).toHaveAttribute("aria-expanded", "false");
 });
+
+test.each(["/", "/work"])(
+  "job actions use past tense on %s without ending the current role",
+  (route) => {
+    const { container } = open(route);
+    const bullets = Array.from(
+      container.querySelectorAll(".experience-description li"),
+    ).map((node) => node.textContent);
+    expect(bullets).toHaveLength(
+      experience.reduce((count, job) => count + job.details.length, 0),
+    );
+    expect(bullets).toContain(
+      "Designed and revised wiring harnesses and electrical documentation.",
+    );
+    expect(bullets).toContain(
+      "Created circuit diagrams, harness drawings, and 3D harness models in SOLIDWORKS.",
+    );
+    expect(bullets).toContain(
+      "Collaborated across engineering teams through design revisions and vehicle builds.",
+    );
+    for (const bullet of bullets) {
+      expect(bullet).toMatch(
+        /^(Designed|Created|Collaborated|Used|Worked|Coordinated|Trained|Oversaw)\b/,
+      );
+      expect(bullet).not.toMatch(
+        /\b(Design and revise|Create circuit|Collaborate across)\b/,
+      );
+    }
+    expect(screen.getByText("Jan 2026 — Present")).toBeInTheDocument();
+    expect(screen.getByText("Current role")).toBeInTheDocument();
+  },
+);

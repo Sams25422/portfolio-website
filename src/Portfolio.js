@@ -203,7 +203,7 @@ function Hero() {
             Based in Austin, TX
           </div>
           <p>
-            Currently designing electrical systems at <strong>Avride.</strong>
+            Electrical Design Engineer at <strong>Avride.</strong>
           </p>
         </div>
       </div>
